@@ -82,35 +82,35 @@ Let there be an election \pmb{E} = (\pmb{C}, \pmb{V}, \pmb{A}).
 \pmb{V} is the set of all voters.
 \pmb{A} is the set of all of the voters' Approval Value Functions.\\
 
-$App^{E}_{v}(c)$ is an Approval Value Function for voter $v \in \pmb{V}$ in election $\pmb{E}$.
+$App^{\pmb{E}}_{v}(c)$ is an Approval Value Function for voter $v \in \pmb{V}$ in election $\pmb{E}$.
 
 \begin{equation*}
-App^{E}_{v} : \pmb{C} \mapsto [-1,1]
+App^{\pmb{E}}_{v} : \pmb{C} \mapsto [-1,1]
 \end{equation*}\\
 
 Where a negative value means the voter believes the candidate will have a bad impact, a positive value means the voter believes the candidate will have a positive impact, and 0 means the voter is apathetic towards the candidate. -1 is the worst possible impact and +1 is the best possible impact a candidate may have. It is not neccessary that the least liked and most liked candidates are placed at -1 and +1 respectively, they may just be assigned an arbitrary value between -1 and 1.\\
 
-$Res^{E}_{S}(c)$ is an function, that given election \pmb{E} and voting strategy \pmb{S}, provides the result of the vote for candidate $c \in \pmb{C}$.
+$Res^{E}_{S}(c)$ is an function, that given election \pmb{E} and voting strategy {S}, provides the result of the vote for candidate $c \in \pmb{C}$.
 
 \begin{gather}
-Res^{E}_{S} : \pmb{C} \mapsto [0,1]\\
-\sum^{}_{c \in \pmb{C}}{Res^{E}_{S}(c)} = 1
+Res^{\pmb{E}}_{S} : \pmb{C} \mapsto [0,1]\\
+\sum^{}_{c \in \pmb{C}}{Res^{\pmb{E}}_{S}(c)} = 1
 \end{gather}\\
 
 \subsection{Question 1}
 
 Let there be a Socially Optimal outcome. It will be defined as the case where
 \begin{gather}
-App^{E}_{pop}(c) = \sum^{}_{v \in \pmb{V}}{App^{E}_{v}(c)}\\
-c_{w} = {argmax}_{c \in \pmb{C}} App^{E}_{pop}(c)\\
-Res^{E}_{S}(c_{w}) = 1
+App^{\pmb{E}}_{pop}(c) = \sum^{}_{v \in \pmb{V}}{App^{\pmb{E}}_{v}(c)}\\
+c_{w} = {argmax}_{c \in \pmb{C}} App^{\pmb{E}}_{pop}(c)\\
+Res^{\pmb{E}}_{S}(c_{w}) = 1
 \end{gather}\\
 
 Let there be a Social-Positive Optimal outcome. It will be defined as the case where the value of the function below is maximised.
 \begin{equation}
 \sum^{}_{v \in \pmb{V}}{\left(
 \begin{cases}
-1, & \sum^{}_{c \in \pmb{C}}{(Res^{E}_{S}(c) \cdot App^{E}_{v}(c))} > 0\\
+1, & \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))} > 0\\
 0, & {otherwise}
 \end{cases}
 \right)}
@@ -120,7 +120,7 @@ Let us define the Population Reward Value as
 \begin{equation}
 \sum^{}_{v \in \pmb{V}}{\left(
 \sum^{}_{c \in \pmb{C}}{\left(
-Res^{E}_{S}(c) \cdot App^{E}_{v}(c)
+Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c)
 \right)}
 \right)}
 \end{equation}\\
@@ -136,8 +136,8 @@ Let there be a Social-Sign Optimal outcome. It will be defined as the case where
 \begin{equation}
 \sum^{}_{v \in \pmb{V}}{\left(
 \begin{cases}
-1, & \sum^{}_{c \in \pmb{C}}{(Res^{E}_{S}(c) \cdot App^{E}_{v}(c))} > 0\\
--1, & \sum^{}_{c \in \pmb{C}}{(Res^{E}_{S}(c) \cdot App^{E}_{v}(c))} < 0\\
+1, & \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))} > 0\\
+-1, & \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))} < 0\\
 0, & {otherwise}
 \end{cases}
 \right)}
@@ -147,7 +147,7 @@ Let there be a Social-Negative Optimal outcome. It will be defined as the case w
 \begin{equation}
 \sum^{}_{v \in \pmb{V}}{\left(
 \begin{cases}
--1, & \sum^{}_{c \in \pmb{C}}{(Res^{E}_{S}(c) \cdot App^{E}_{v}(c))} < 0\\
+-1, & \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))} < 0\\
 0, & {otherwise}
 \end{cases}
 \right)}
