@@ -1,0 +1,171 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx} 
+\graphicspath{ {./Images/} } %tells the program what folder to find the images in
+
+\title{Proportional Approval Voting\\DRAFT}
+\author{
+  Lim Devon\\
+  \texttt{h2010076@nushigh.edu.sg}
+  \and
+  Lee Hong Hao Casper\\
+  \texttt{h2010069@nushigh.edu.sg}
+  \and
+  Kang Jun Jie Joseph\\
+  \texttt{h2010059@nushigh.edu.sg}
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+The purpose of this document is to test out some of the features of \LaTeX{}. Compile this document, read the notes and compare the code to the final product to learn how to use these commands.
+
+\section{Equations}
+This section will be testing some different ways to write equations in different ways. 
+
+\subsection{Simple Equations}
+Here is an example of an equation
+%using the command \begin{equation} always numbers the equation, label just allows you to reference later%
+\begin{equation} \label{luna}
+P(x)=ax^2+bx+c
+\end{equation}
+
+The equation \ref{luna} is an example of a quadratic equation.
+
+\subsection{Splitting an equation}
+
+%This is how you can add a comment without it showing in your final document.  The \\ starts a new line. The & symbol tells the program where you want your two equations to align. split allows you to label the group of equations%
+\begin{equation}\label{eq2}
+\begin{split}
+V&=\frac{4}{3}\pi r^3 \\
+&= \frac{4\pi r^3}{3}
+\end{split}
+\end{equation}
+
+Equation \ref{eq2} shows that you can write the equation for the volume of a sphere in multiple ways.
+
+\subsection{Aligning}
+
+Here is an example of aligning the equations with the = signs.
+\begin{align*} 
+2x+3&=3\\
+3x+2&=2x+3
+\end{align*}\\
+
+Below is another example but with multiple equations.
+\begin{align*}
+2x&=3y  &   A&=B    &   3g&=h+4 \\
+x+2&=y  &   A&=2B+1 &   g+1&=2h
+\end{align*}\\
+
+Here is the last example of this section where the equations are centered but not aligned.
+\begin{gather*} 
+5x+3=4y-3 \\
+2x=y+1 
+\end{gather*}\\
+
+
+\subsection{Other ways of writing math}
+%There are some more basic commands to write math as well such as \( \), \[ \], $ $, or \begin{math} \end{math}
+You can also write equations such as \(A=\pi r^2\) in line like this or an equation such as $A=l*w$ in line using the other command that you can see in the code.\\\\
+
+To write equations not in line you can also write it like this: \[A=\frac{1}{2}h(b_1+b_2)\]\\\\\\
+
+\section{Questions}
+
+Let there be an election \pmb{E} = (\pmb{C}, \pmb{V}, \pmb{A}).
+\pmb{C} is the set of all candidates.
+\pmb{V} is the set of all voters.
+\pmb{A} is the set of all of the voters' Approval Value Functions.\\
+
+$App^{E}_{v}(c)$ is an Approval Value Function for voter $v \in \pmb{V}$ in election $\pmb{E}$.
+
+\begin{equation*}
+App^{E}_{v} : \pmb{C} \mapsto [-1,1]
+\end{equation*}\\
+
+Where a negative value means the voter believes the candidate will have a bad impact, a positive value means the voter believes the candidate will have a positive impact, and 0 means the voter is apathetic towards the candidate. -1 is the worst possible impact and +1 is the best possible impact a candidate may have. It is not neccessary that the least liked and most liked candidates are placed at -1 and +1 respectively, they may just be assigned an arbitrary value between -1 and 1.\\
+
+$Res^{E}_{S}(c)$ is an function, that given election \pmb{E} and voting strategy \pmb{S}, provides the result of the vote for candidate $c \in \pmb{C}$.
+
+\begin{gather}
+Res^{E}_{S} : \pmb{C} \mapsto [0,1]\\
+\sum^{}_{c \in \pmb{C}}{Res^{E}_{S}(c)} = 1
+\end{gather}\\
+
+\subsection{Question 1}
+
+Let there be a Socially Optimal outcome. It will be defined as the case where
+\begin{gather}
+App^{E}_{pop}(c) = \sum^{}_{v \in \pmb{V}}{App^{E}_{v}(c)}\\
+c_{w} = {argmax}_{c \in \pmb{C}} App^{E}_{pop}(c)\\
+Res^{E}_{S}(c_{w}) = 1
+\end{gather}\\
+
+Let there be a Social-Positive Optimal outcome. It will be defined as the case where the value of the function below is maximised.
+\begin{equation}
+\sum^{}_{v \in \pmb{V}}{\left(
+\begin{cases}
+1, & \sum^{}_{c \in \pmb{C}}{(Res^{E}_{S}(c) \cdot App^{E}_{v}(c))} > 0\\
+0, & {otherwise}
+\end{cases}
+\right)}
+\end{equation}\\
+
+Let us define the Population Reward Value as
+\begin{equation}
+\sum^{}_{v \in \pmb{V}}{\left(
+\sum^{}_{c \in \pmb{C}}{\left(
+Res^{E}_{S}(c) \cdot App^{E}_{v}(c)
+\right)}
+\right)}
+\end{equation}\\
+
+Are there bounds (either uppor or lower) on the difference between the population reward values of the Soically Optimal and Social-Positive Optimal outcomes?
+
+
+\subsection{Some other stratgies and outcomes}
+
+\subsubsection{Outcomes}
+
+Let there be a Social-Sign Optimal outcome. It will be defined as the case where the value of the function below is maximised.
+\begin{equation}
+\sum^{}_{v \in \pmb{V}}{\left(
+\begin{cases}
+1, & \sum^{}_{c \in \pmb{C}}{(Res^{E}_{S}(c) \cdot App^{E}_{v}(c))} > 0\\
+-1, & \sum^{}_{c \in \pmb{C}}{(Res^{E}_{S}(c) \cdot App^{E}_{v}(c))} < 0\\
+0, & {otherwise}
+\end{cases}
+\right)}
+\end{equation}\\
+
+Let there be a Social-Negative Optimal outcome. It will be defined as the case where the value of the function below is maximised.
+\begin{equation}
+\sum^{}_{v \in \pmb{V}}{\left(
+\begin{cases}
+-1, & \sum^{}_{c \in \pmb{C}}{(Res^{E}_{S}(c) \cdot App^{E}_{v}(c))} < 0\\
+0, & {otherwise}
+\end{cases}
+\right)}
+\end{equation}\\
+
+\subsubsection{Strategies}
+
+Let there be a voting strategy where a voter only votes for their highest ranked options.
+
+Let there be a voting strategy where a voter only votes for all candidates except their lowest ranked option.
+
+Let there be a voting strategy where a voter only votes for the options they ranked positively.
+
+\subsubsection{More Questions!}
+
+Are there bounds between the social cost of these strategies and outcomes compared to the utilitarian Socially Optimal outcome?\\
+Are there bounds between the difference of social costs among these outcomes?
+
+
+
+\end{document}
