@@ -22,7 +22,7 @@
 \maketitle
 
 \section{Introduction}
-The purpose of this document is to test out some of the features of \LaTeX{}. Compile this document, read the notes and compare the code to the final product to learn how to use these commands.
+The purpose of this document is to test out some of the features of \LaTeX{}. Compile this document (Keyboard Shortcut Ctrl + F9), read the notes and compare the code to the final product to learn how to use these commands.
 
 \section{Equations}
 This section will be testing some different ways to write equations in different ways. 
@@ -83,19 +83,23 @@ Let there be an election \pmb{E} = (\pmb{C}, \pmb{V}, \pmb{A}).
 \pmb{A} is the set of all of the voters' Approval Value Functions.\\
 
 $App^{\pmb{E}}_{v}(c)$ is an Approval Value Function for voter $v \in \pmb{V}$ in election $\pmb{E}$.
-
-\begin{equation*}
+\begin{equation}
 App^{\pmb{E}}_{v} : \pmb{C} \mapsto [-1,1]
-\end{equation*}\\
-
+\end{equation}
 Where a negative value means the voter believes the candidate will have a bad impact, a positive value means the voter believes the candidate will have a positive impact, and 0 means the voter is apathetic towards the candidate. -1 is the worst possible impact and +1 is the best possible impact a candidate may have. It is not neccessary that the least liked and most liked candidates are placed at -1 and +1 respectively, they may just be assigned an arbitrary value between -1 and 1.\\
 
-$Res^{E}_{S}(c)$ is an function, that given election \pmb{E} and voting strategy {S}, provides the result of the vote for candidate $c \in \pmb{C}$.
-
+$Res^{\pmb{E}}_{S}(c)$ is a function, that given election \pmb{E} and voting strategy {S}, provides the result of the vote for candidate $c \in \pmb{C}$.
 \begin{gather}
 Res^{\pmb{E}}_{S} : \pmb{C} \mapsto [0,1]\\
 \sum^{}_{c \in \pmb{C}}{Res^{\pmb{E}}_{S}(c)} = 1
-\end{gather}\\
+\end{gather}
+
+${IRV}^{\pmb{E}}_{S}(v)$ is a function, that given election \pmb{E} and voting strategy {S}, provides a numerical utility or satisfaction value with the results for voter $v \in \pmb{V}$.
+\begin{equation}
+{IRV}^{\pmb{E}}_{S}(v) = \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}
+\end{equation}
+It is trivial to show that ${IRV}^{\pmb{E}}_{S} : \pmb{V} \mapsto [-1,1]$. That duty falls to the future versions of the authors.
+
 
 \subsection{Question 1}
 
@@ -155,16 +159,73 @@ Let there be a Social-Negative Optimal outcome. It will be defined as the case w
 
 \subsubsection{Strategies}
 
-Let there be a voting strategy where a voter only votes for their highest ranked options.
+Strategies differ from outcomes in that strategies lead to outcomes. Therefore, our Optimal Outcomes are theoretical situations that may in fact have no simple strategy that leads to it. It would therefore be of great interest to find the social costs between the outcomes of simple strategies and optimal outcomes.\\
 
-Let there be a voting strategy where a voter only votes for all candidates except their lowest ranked option.
-
-Let there be a voting strategy where a voter only votes for the options they ranked positively.
+\noindent Here is a list of a few simple strategies we can analyse:
+\begin{itemize}
+  \item A voter only votes for their highest ranked options.
+  \item A voter only votes for all candidates except their lowest ranked option.
+  \item A voter only votes for the options with a positive individual reward weight.
+\end{itemize}
 
 \subsubsection{More Questions!}
 
 Are there bounds between the social cost of these strategies and outcomes compared to the utilitarian Socially Optimal outcome?\\
 Are there bounds between the difference of social costs among these outcomes?
+
+\subsection{Question 2}
+We can show that a voter voting for the highest weighted option will never be detrimental to their Individual Reward Value.\\
+
+Consider a voter $v_{1}$. Let $c_{1}$ be their highest weighted candidate, ${argmax}_{c \in \pmb{C}}App^{\pmb{E}}_{v_{i}}(c)$. Now consider 2 cases: (1) $v_{1}$ approves of $c_{1}$, (2) $v_{1}$ does not approve of $c_{1}$. Let $a_{c}$ be the number of approvals candidate $c \in \pmb{C}$ has excluding $v_{1}$'s vote for $c_{1}$. Let $m$ be the total number of votes excluding $v_{1}$'s vote for $c_{1}$.\\
+
+In case (1), 
+\begin{equation}
+\begin{aligned}
+{IRV}^{\pmb{E}}_{(1)}(v_1) 
+&= {Res}^{\pmb{E}}_{S}(c_1)\cdot{App}^{\pmb{E}}_{v_1}(c_1) + \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}\\
+&= \frac{a_1+1}{m+1}\cdot{App}^{\pmb{E}}_{v_1}(c_1) + \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}
+\end{aligned}  
+\end{equation}
+
+In case (2), 
+\begin{equation}
+\begin{aligned}
+{IRV}^{\pmb{E}}_{(1)}(v_1) 
+&= {Res}^{\pmb{E}}_{S}(c_1)\cdot{App}^{\pmb{E}}_{v_1}(c_1) + \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}\\
+&= \frac{a_1}{m}\cdot{App}^{\pmb{E}}_{v_1}(c_1) + \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}
+\end{aligned}  
+\end{equation}
+
+Therefore,
+\begin{equation}
+\begin{aligned}
+{IRV}^{\pmb{E}}_{(2)}(v_1) - {IRV}^{\pmb{E}}_{(1)}(v_1)
+&=  \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}\\
+&+ \left(\frac{c_{1}}{m}-\frac{c_{1}+1}{m+1}\right)\cdot{App}^{\pmb{E}}_{v_1}(c_{1})\\
+\end{aligned}  
+\end{equation}
+
+Case (2) will only yield a larger Individual Reward Value than Case (1) if 
+\begin{gather}
+\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)} + \left(\frac{c_{1}}{m}-\frac{c_{1}+1}{m+1}\right)\cdot{App}^{\pmb{E}}_{v_1}(c_{1}) > 0\nonumber\\
+\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)} > \left(\frac{c_{1}}{m}-\frac{c_{1}+1}{m+1}\right)\cdot{App}^{\pmb{E}}_{v_1}(c_{1})
+\end{gather}
+
+The maximum value of $\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}$ is attained when ${App}^{\pmb{E}}_{v_1}(c_{n}) = 1 \forall {c} \in \pmb{C} \setminus \{c_1\}$. So,
+\begin{equation}
+\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)} = \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m-1)}\right)} = \frac{\sum^{|\pmb{C}|}_{n = 2}{a_{c_{n}}}}{m(m-1)} = \frac{m-a_1}{m(m-1)}
+\end{equation}
+
+Therefore, $\forall {c} \in \pmb{C}$,
+\begin{equation}
+\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m-1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)} < \beta\cdot\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m-1)}\right)} = \beta\cdot\frac{m-a_1}{m(m-1)}
+\end{equation}
+Where $\beta$ is ${max}_{c \in \pmb{C} \setminus \{c_1\}}\left({App}^{\pmb{E}}_{v_1}(c)\right)$. Note that since we have defined $c_1$ to be the highest weighted candidate for $v_1$, $\beta \leq {App}^{\pmb{E}}_{v_1}(c_1)$.\\
+
+TODO: Add the rest of it.
+
+
+
 
 
 
