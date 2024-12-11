@@ -99,7 +99,7 @@ ${IRV}^{\pmb{E}}_{S}(v)$ is a function, that given election \pmb{E} and voting s
 \begin{equation}
 {IRV}^{\pmb{E}}_{S}(v) = \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}
 \end{equation}
-It is trivial to show that ${IRV}^{\pmb{E}}_{S} : \pmb{V} \mapsto [-1,1]$. That duty falls to the future versions of the authors.
+It is trivial to show that ${IRV}^{\pmb{E}}_{S} : \pmb{V} \mapsto [-1,1]$. The proof exists but I'm gonna add it later.
 
 
 \subsection{Question 1}
@@ -130,10 +130,20 @@ Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c)
 \right)}
 \end{equation}\\
 
-Are there bounds (either uppor or lower) on the difference between the population reward values of the Soically Optimal and Social-Positive Optimal outcomes?
+Are there bounds (either upper or lower) on the difference between the population reward values of the Socially Optimal and Social-Positive Optimal outcomes?
+
+It is known that the Socially Optimal outcome maximises PRV. Wei Shen Me? Yin Wei
+\begin{equation}
+\begin{aligned}
+PRV
+&= \sum^{}_{v \in \pmb{V}}{\left(\sum^{}_{c \in \pmb{C}}{\left(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c)\right)}\right)}\\
+&= \sum^{}_{c \in \pmb{C}}{\left(\sum^{}_{v \in \pmb{V}}{\left(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c)\right)}\right)}\\
+&= \sum^{}_{c \in \pmb{C}}{\left(Res^{\pmb{E}}_{S}(c) \cdot \sum^{}_{v \in \pmb{V}}{\left(App^{\pmb{E}}_{v}(c)\right)}\right)}
+\end{aligned}
+\end{equation}
 
 
-\subsection{Some other stratgies and outcomes}
+\subsection{Strategies and additional outcomes}
 
 \subsubsection{Outcomes}
 
@@ -162,12 +172,66 @@ Let there be a Social-Negative Optimal outcome. It will be defined as the case w
 
 Strategies differ from outcomes in that strategies lead to outcomes. Therefore, our Optimal Outcomes are theoretical situations that may in fact have no simple strategy that leads to it. It would therefore be of great interest to find the social costs between the outcomes of simple strategies and optimal outcomes.\\
 
-\noindent Here is a list of a few simple strategies we can analyse:
+\noindent Here is a list of a few simple strategies we will analyse:
 \begin{itemize}
-  \item A voter only votes for their highest ranked options.
-  \item A voter only votes for all candidates except their lowest ranked option.
-  \item A voter only votes for the options with a positive individual reward weight.
+  \item A voter only votes for their highest ranked options. (Strategy 1)
+  \item A voter only votes for all candidates except their lowest ranked option. (Strategy 2)
+  \item A voter only votes for the options with a positive individual reward weight. (Strategy 3)
 \end{itemize}
+
+\subsubsection{Strategy 3}
+
+Let there be an election $\pmb{E}$ with a set of candidates $\pmb{C}$ and a set of voters $\pmb{V}$. 
+Let $\pmb{C}$ be split into subsets $\pmb{C}_{1}$, $\pmb{C}_{2}$ and $\pmb{C}_{3}$ (i.e. $\pmb{C}_{1}, \pmb{C}_{2}, \pmb{C}_{3} \subset \pmb{C}$ and $\pmb{C}_{1}+\pmb{C}_{2}+\pmb{C}_{3} \equiv \pmb{C}$) and let $\pmb{V}$ be split into subsets $\pmb{V}_{1}$, $\pmb{V}_{2}$, and $\pmb{V}_{3}$ (i.e. $\pmb{V}_{1}, \pmb{V}_{2}, \pmb{V}_{3} \subset \pmb{V}$ and $\pmb{V}_{1}+\pmb{V}_{2}+\pmb{V}_{3} \equiv \pmb{V}$) with sizes ${m}_{1}$, ${m}_{2}$ and ${m}_{3}$ respectively.
+Let the subsets fulfil the following conditions:\\
+
+\begin{itemize}
+    \item For all $v \in \pmb{V}_{1}$:\\
+    \begin{gather}
+    \begin{split}
+        \sum^{}_{c \in \pmb{C}_{1}}{App^{\pmb{E}}_{v}(c)} \leq -\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}
+    \end{split}\\
+    App^{\pmb{E}}_{v}(c) \geq 0, c \in \pmb{C}_{1}\\
+    App^{\pmb{E}}_{v}(c) \leq 0, c \in \pmb{C}_{2} \cup \pmb{C}_{3}
+    \end{gather}
+    \item For all $v \in \pmb{V}_{2}$:\\
+    \begin{gather}
+    \begin{split}
+        \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)} \leq -\frac{{m}_{1}}{{m}_{2}}\sum^{}_{c \in \pmb{C}_{1}}{App^{\pmb{E}}_{v}(c)}
+    \end{split}\\
+    App^{\pmb{E}}_{v}(c) \geq 0, c \in \pmb{C}_{2}\\
+    App^{\pmb{E}}_{v}(c) \leq 0, c \in \pmb{C}_{1} \cup \pmb{C}_{3}
+    \end{gather}
+    \item For all $v \in \pmb{V}_{3}$:\\
+    \begin{gather}
+        App^{\pmb{E}}_{v}(c) \leq 0, c \in \pmb{C}
+    \end{gather}
+\end{itemize}
+
+Given these conditions and using strategy 3,
+\begin{equation}
+    {IRV}^{\pmb{E}}_{S}(v) = \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}\\
+    = \sum^{}_{c \in \pmb{C}_{1}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}+\sum^{}_{c \in \pmb{C}_{2}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}+\sum^{}_{c \in \pmb{C}_{3}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}
+\end{equation}\\
+
+As $App^{\pmb{E}}_{v}(c) \leq 0$ for all $c \in \pmb{C}_{3}$, $\sum^{}_{c \in \pmb{C}_{3}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}=0$. 
+Additionally, as $App^{\pmb{E}}_{v}(c) \leq 0$ for all $c$ when $v \in \pmb{V}_{3}$, ${IRV}^{\pmb{E}}_{S}(v) \leq 0$ for all $v \in \pmb{V}_{3}$. 
+The total number of votes $x$ will be equal to ${m}_{1}{c}_{1}+{m}_{2}{c}_{2}$, where ${c}_{1}$ and ${c}_{2}$ are the sizes of $\pmb{C}_{1}$ and $\pmb{C}_{2}$ respectively. This is because given strategy 3 all $v \in \pmb{V}_{1}$ or $\pmb{V}_{2}$ will vote for all $c \in \pmb{C}_{1}$ or $\pmb{C}_{2}$ respectively i.e. ${c}_{1}$ candidates receive ${m}_{1}$ votes each and ${c}_{2}$ candidates receive ${m}_{2}$ votes each.\\
+For $v \in \pmb{V}_{1}$:
+\begin{equation}
+\begin{split}
+    {IRV}^{\pmb{E}}_{S}(v) = \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}\\
+    = \sum^{}_{c \in \pmb{C}_{1}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}+\sum^{}_{c \in \pmb{C}_{2}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}\\
+    = \sum^{}_{c \in \pmb{C}_{1}}{(\frac{{m}_{1}}{x} \cdot App^{\pmb{E}}_{v}(c))}+\sum^{}_{c \in \pmb{C}_{2}}{(\frac{{m}_{2}}{x} \cdot App^{\pmb{E}}_{v}(c))}\\
+    = \frac{{m}_{1}}{x} \cdot \sum^{}_{c \in \pmb{C}_{1}}{App^{\pmb{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}\\
+    \leq \frac{{m}_{1}}{x} \cdot (-\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)})+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}\\
+    = -\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}\\
+    = 0
+\end{split}     
+\end{equation}\\
+
+A similar proof exists for $v \in \pmb{V}_{1}$.\\
+Hence ${IRV}^{\pmb{E}}_{S}(v) \leq 0$ for all $v$, showing that choosing strategy 3 with these conditions will lead to the least Social-Positive, Social-Sign and Social-Sign optimal solutions. 
 
 \subsubsection{More Questions!}
 
@@ -249,6 +313,7 @@ we show that
 \end{equation}\\
 
 Therefore, we have shown that case (2), where the voter does not vote for their highest weighted candidate, will always result in that voter's Individual Reward Value being lower than or equal to that of case (1), where the voter votes for their highest weighted candidate
+
 
 
 
