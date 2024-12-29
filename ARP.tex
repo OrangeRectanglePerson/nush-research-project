@@ -78,44 +78,44 @@ To write equations not in line you can also write it like this: \[A=\frac{1}{2}h
 
 \section{Questions}
 
-Let there be an election \pmb{E} = (\pmb{C}, \pmb{V}, \pmb{A}).
-\pmb{C} is the set of all candidates.
-\pmb{V} is the set of all voters.
-\pmb{A} is the set of all of the voters' Approval Value Functions.\\
+Let there be an election $\boldsymbol{E} = (\boldsymbol{C}, \boldsymbol{V}, \boldsymbol{A})$.
+$\boldsymbol{C}$ is the set of all candidates.
+$\boldsymbol{V}$ is the set of all voters.
+$\boldsymbol{A}$ is the set of all of the voters' Approval Value Functions.\\
 
-$App^{\pmb{E}}_{v}(c)$ is an Approval Value Function for voter $v \in \pmb{V}$ in election $\pmb{E}$.
+$App^{\boldsymbol{E}}_{v}(c)$ is an Approval Value Function for voter $v \in \boldsymbol{V}$ in election $\boldsymbol{E}$.
 \begin{equation}
-App^{\pmb{E}}_{v} : \pmb{C} \mapsto [-1,1]
+App^{\boldsymbol{E}}_{v} : \boldsymbol{C} \mapsto [-1,1]
 \end{equation}
 Where a negative value means the voter believes the candidate will have a bad impact, a positive value means the voter believes the candidate will have a positive impact, and 0 means the voter is apathetic towards the candidate. -1 is the worst possible impact and +1 is the best possible impact a candidate may have. It is not neccessary that the least liked and most liked candidates are placed at -1 and +1 respectively, they may just be assigned an arbitrary value between -1 and 1.\\
 
-$Res^{\pmb{E}}_{S}(c)$ is a function, that given election \pmb{E} and voting strategy {S}, provides the result of the vote for candidate $c \in \pmb{C}$.
+$Res^{\boldsymbol{E}}_{S}(c)$ is a function, that given election $\boldsymbol{E}$ and voting strategy $S$, provides the result of the vote for candidate $c \in \boldsymbol{C}$.
 \begin{gather}
-Res^{\pmb{E}}_{S} : \pmb{C} \mapsto [0,1]\\
-\sum^{}_{c \in \pmb{C}}{Res^{\pmb{E}}_{S}(c)} = 1
+Res^{\boldsymbol{E}}_{S} : \boldsymbol{C} \mapsto [0,1]\\
+\sum^{}_{c \in \boldsymbol{C}}{Res^{\boldsymbol{E}}_{S}(c)} = 1
 \end{gather}
 
-${IRV}^{\pmb{E}}_{S}(v)$ is a function, that given election \pmb{E} and voting strategy {S}, provides a numerical utility or satisfaction value with the results for voter $v \in \pmb{V}$. We call the output of this function the Individual Reward Value.
+${IRV}^{\boldsymbol{E}}_{S}(v)$ is a function, that given election $\boldsymbol{E}$ and voting strategy $S$, provides a numerical utility or satisfaction value with the results for voter $v \in \boldsymbol{V}$. We call the output of this function the Individual Reward Value.
 \begin{equation}
-{IRV}^{\pmb{E}}_{S}(v) = \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}
+{IRV}^{\boldsymbol{E}}_{S}(v) = \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}
 \end{equation}
-It is trivial to show that ${IRV}^{\pmb{E}}_{S} : \pmb{V} \mapsto [-1,1]$. The proof exists but I'm gonna add it later.
+It is trivial to show that ${IRV}^{\boldsymbol{E}}_{S} : \boldsymbol{V} \mapsto [-1,1]$. The proof exists but I'm gonna add it later.
 
 
 \subsection{Question 1}
 
 Let there be a Socially Optimal outcome. It will be defined as the case where
 \begin{gather}
-App^{\pmb{E}}_{pop}(c) = \sum^{}_{v \in \pmb{V}}{App^{\pmb{E}}_{v}(c)}\\
-c_{w} = {argmax}_{c \in \pmb{C}} App^{\pmb{E}}_{pop}(c)\\
-Res^{\pmb{E}}_{S}(c_{w}) = 1
+App^{\boldsymbol{E}}_{pop}(c) = \sum^{}_{v \in \boldsymbol{V}}{App^{\boldsymbol{E}}_{v}(c)}\\
+c_{w} = {argmax}_{c \in \boldsymbol{C}} App^{\boldsymbol{E}}_{pop}(c)\\
+Res^{\boldsymbol{E}}_{S}(c_{w}) = 1
 \end{gather}\\
 
 Let there be a Social-Positive Optimal outcome. It will be defined as the case where the value of the function below is maximised.
 \begin{equation}
-\sum^{}_{v \in \pmb{V}}{\left(
+\sum^{}_{v \in \boldsymbol{V}}{\left(
 \begin{cases}
-1, & \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))} > 0\\
+1, & \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))} > 0\\
 0, & {otherwise}
 \end{cases}
 \right)}
@@ -123,9 +123,9 @@ Let there be a Social-Positive Optimal outcome. It will be defined as the case w
 
 Let us define the Population Reward Value as
 \begin{equation}
-\sum^{}_{v \in \pmb{V}}{\left(
-\sum^{}_{c \in \pmb{C}}{\left(
-Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c)
+\sum^{}_{v \in \boldsymbol{V}}{\left(
+\sum^{}_{c \in \boldsymbol{C}}{\left(
+Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c)
 \right)}
 \right)}
 \end{equation}\\
@@ -136,9 +136,9 @@ It is known that the Socially Optimal outcome maximises PRV. Wei Shen Me? Yin We
 \begin{equation}
 \begin{aligned}
 PRV
-&= \sum^{}_{v \in \pmb{V}}{\left(\sum^{}_{c \in \pmb{C}}{\left(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c)\right)}\right)}\\
-&= \sum^{}_{c \in \pmb{C}}{\left(\sum^{}_{v \in \pmb{V}}{\left(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c)\right)}\right)}\\
-&= \sum^{}_{c \in \pmb{C}}{\left(Res^{\pmb{E}}_{S}(c) \cdot \sum^{}_{v \in \pmb{V}}{\left(App^{\pmb{E}}_{v}(c)\right)}\right)}
+&= \sum^{}_{v \in \boldsymbol{V}}{\left(\sum^{}_{c \in \boldsymbol{C}}{\left(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c)\right)}\right)}\\
+&= \sum^{}_{c \in \boldsymbol{C}}{\left(\sum^{}_{v \in \boldsymbol{V}}{\left(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c)\right)}\right)}\\
+&= \sum^{}_{c \in \boldsymbol{C}}{\left(Res^{\boldsymbol{E}}_{S}(c) \cdot \sum^{}_{v \in \boldsymbol{V}}{\left(App^{\boldsymbol{E}}_{v}(c)\right)}\right)}
 \end{aligned}
 \end{equation}
 
@@ -149,10 +149,10 @@ PRV
 
 Let there be a Social-Sign Optimal outcome. It will be defined as the case where the value of the function below is maximised.
 \begin{equation}
-\sum^{}_{v \in \pmb{V}}{\left(
+\sum^{}_{v \in \boldsymbol{V}}{\left(
 \begin{cases}
-1, & \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))} > 0\\
--1, & \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))} < 0\\
+1, & \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))} > 0\\
+-1, & \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))} < 0\\
 0, & {otherwise}
 \end{cases}
 \right)}
@@ -160,9 +160,9 @@ Let there be a Social-Sign Optimal outcome. It will be defined as the case where
 
 Let there be a Social-Negative Optimal outcome. It will be defined as the case where the value of the function below is maximised.
 \begin{equation}
-\sum^{}_{v \in \pmb{V}}{\left(
+\sum^{}_{v \in \boldsymbol{V}}{\left(
 \begin{cases}
--1, & \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))} < 0\\
+-1, & \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))} < 0\\
 0, & {otherwise}
 \end{cases}
 \right)}
@@ -181,57 +181,57 @@ Strategies differ from outcomes in that strategies lead to outcomes. Therefore, 
 
 \subsubsection{Strategy 3}
 
-Let there be an election $\pmb{E}$ with a set of candidates $\pmb{C}$ and a set of voters $\pmb{V}$. 
-Let $\pmb{C}$ be split into subsets $\pmb{C}_{1}$, $\pmb{C}_{2}$ and $\pmb{C}_{3}$ (i.e. $\pmb{C}_{1}, \pmb{C}_{2}, \pmb{C}_{3} \subset \pmb{C}$ and $\pmb{C}_{1}+\pmb{C}_{2}+\pmb{C}_{3} \equiv \pmb{C}$) and let $\pmb{V}$ be split into subsets $\pmb{V}_{1}$, $\pmb{V}_{2}$, and $\pmb{V}_{3}$ (i.e. $\pmb{V}_{1}, \pmb{V}_{2}, \pmb{V}_{3} \subset \pmb{V}$ and $\pmb{V}_{1}+\pmb{V}_{2}+\pmb{V}_{3} \equiv \pmb{V}$) with sizes ${m}_{1}$, ${m}_{2}$ and ${m}_{3}$ respectively.
+Let there be an election $\boldsymbol{E}$ with a set of candidates $\boldsymbol{C}$ and a set of voters $\boldsymbol{V}$. 
+Let $\boldsymbol{C}$ be split into subsets $\boldsymbol{C}_{1}$, $\boldsymbol{C}_{2}$ and $\boldsymbol{C}_{3}$ (i.e. $\boldsymbol{C}_{1}, \boldsymbol{C}_{2}, \boldsymbol{C}_{3} \subset \boldsymbol{C}$ and $\boldsymbol{C}_{1}+\boldsymbol{C}_{2}+\boldsymbol{C}_{3} \equiv \boldsymbol{C}$) and let $\boldsymbol{V}$ be split into subsets $\boldsymbol{V}_{1}$, $\boldsymbol{V}_{2}$, and $\boldsymbol{V}_{3}$ (i.e. $\boldsymbol{V}_{1}, \boldsymbol{V}_{2}, \boldsymbol{V}_{3} \subset \boldsymbol{V}$ and $\boldsymbol{V}_{1}+\boldsymbol{V}_{2}+\boldsymbol{V}_{3} \equiv \boldsymbol{V}$) with sizes ${m}_{1}$, ${m}_{2}$ and ${m}_{3}$ respectively.
 Let the subsets fulfil the following conditions:\\
 
 \begin{itemize}
-    \item For all $v \in \pmb{V}_{1}$:\\
+    \item For all $v \in \boldsymbol{V}_{1}$:\\
     \begin{gather}
     \begin{split}
-        \sum^{}_{c \in \pmb{C}_{1}}{App^{\pmb{E}}_{v}(c)} \leq -\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}
+        \sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)} \leq -\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}
     \end{split}\\
-    App^{\pmb{E}}_{v}(c) \geq 0, c \in \pmb{C}_{1}\\
-    App^{\pmb{E}}_{v}(c) \leq 0, c \in \pmb{C}_{2} \cup \pmb{C}_{3}
+    App^{\boldsymbol{E}}_{v}(c) \geq 0, c \in \boldsymbol{C}_{1}\\
+    App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}_{2} \cup \boldsymbol{C}_{3}
     \end{gather}
-    \item For all $v \in \pmb{V}_{2}$:\\
+    \item For all $v \in \boldsymbol{V}_{2}$:\\
     \begin{gather}
     \begin{split}
-        \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)} \leq -\frac{{m}_{1}}{{m}_{2}}\sum^{}_{c \in \pmb{C}_{1}}{App^{\pmb{E}}_{v}(c)}
+        \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)} \leq -\frac{{m}_{1}}{{m}_{2}}\sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)}
     \end{split}\\
-    App^{\pmb{E}}_{v}(c) \geq 0, c \in \pmb{C}_{2}\\
-    App^{\pmb{E}}_{v}(c) \leq 0, c \in \pmb{C}_{1} \cup \pmb{C}_{3}
+    App^{\boldsymbol{E}}_{v}(c) \geq 0, c \in \boldsymbol{C}_{2}\\
+    App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}_{1} \cup \boldsymbol{C}_{3}
     \end{gather}
-    \item For all $v \in \pmb{V}_{3}$:\\
+    \item For all $v \in \boldsymbol{V}_{3}$:\\
     \begin{gather}
-        App^{\pmb{E}}_{v}(c) \leq 0, c \in \pmb{C}
+        App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}
     \end{gather}
 \end{itemize}
 
 Given these conditions and using strategy 3,
 \begin{equation}
-    {IRV}^{\pmb{E}}_{S}(v) = \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}\\
-    = \sum^{}_{c \in \pmb{C}_{1}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}+\sum^{}_{c \in \pmb{C}_{2}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}+\sum^{}_{c \in \pmb{C}_{3}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}
+    {IRV}^{\boldsymbol{E}}_{S}(v) = \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
+    = \sum^{}_{c \in \boldsymbol{C}_{1}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{3}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}
 \end{equation}\\
 
-As $App^{\pmb{E}}_{v}(c) \leq 0$ for all $c \in \pmb{C}_{3}$, $\sum^{}_{c \in \pmb{C}_{3}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}=0$. 
-Additionally, as $App^{\pmb{E}}_{v}(c) \leq 0$ for all $c$ when $v \in \pmb{V}_{3}$, ${IRV}^{\pmb{E}}_{S}(v) \leq 0$ for all $v \in \pmb{V}_{3}$. 
-The total number of votes $x$ will be equal to ${m}_{1}{c}_{1}+{m}_{2}{c}_{2}$, where ${c}_{1}$ and ${c}_{2}$ are the sizes of $\pmb{C}_{1}$ and $\pmb{C}_{2}$ respectively. This is because given strategy 3 all $v \in \pmb{V}_{1}$ or $\pmb{V}_{2}$ will vote for all $c \in \pmb{C}_{1}$ or $\pmb{C}_{2}$ respectively i.e. ${c}_{1}$ candidates receive ${m}_{1}$ votes each and ${c}_{2}$ candidates receive ${m}_{2}$ votes each.\\
-For $v \in \pmb{V}_{1}$:
+As $App^{\boldsymbol{E}}_{v}(c) \leq 0$ for all $c \in \boldsymbol{C}_{3}$, $\sum^{}_{c \in \boldsymbol{C}_{3}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}=0$. 
+Additionally, as $App^{\boldsymbol{E}}_{v}(c) \leq 0$ for all $c$ when $v \in \boldsymbol{V}_{3}$, ${IRV}^{\boldsymbol{E}}_{S}(v) \leq 0$ for all $v \in \boldsymbol{V}_{3}$. 
+The total number of votes $x$ will be equal to ${m}_{1}{c}_{1}+{m}_{2}{c}_{2}$, where ${c}_{1}$ and ${c}_{2}$ are the sizes of $\boldsymbol{C}_{1}$ and $\boldsymbol{C}_{2}$ respectively. This is because given strategy 3 all $v \in \boldsymbol{V}_{1}$ or $\boldsymbol{V}_{2}$ will vote for all $c \in \boldsymbol{C}_{1}$ or $\boldsymbol{C}_{2}$ respectively i.e. ${c}_{1}$ candidates receive ${m}_{1}$ votes each and ${c}_{2}$ candidates receive ${m}_{2}$ votes each.\\
+For $v \in \boldsymbol{V}_{1}$:
 \begin{equation}
 \begin{split}
-    {IRV}^{\pmb{E}}_{S}(v) = \sum^{}_{c \in \pmb{C}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}\\
-    = \sum^{}_{c \in \pmb{C}_{1}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}+\sum^{}_{c \in \pmb{C}_{2}}{(Res^{\pmb{E}}_{S}(c) \cdot App^{\pmb{E}}_{v}(c))}\\
-    = \sum^{}_{c \in \pmb{C}_{1}}{(\frac{{m}_{1}}{x} \cdot App^{\pmb{E}}_{v}(c))}+\sum^{}_{c \in \pmb{C}_{2}}{(\frac{{m}_{2}}{x} \cdot App^{\pmb{E}}_{v}(c))}\\
-    = \frac{{m}_{1}}{x} \cdot \sum^{}_{c \in \pmb{C}_{1}}{App^{\pmb{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}\\
-    \leq \frac{{m}_{1}}{x} \cdot (-\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)})+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}\\
-    = -\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \pmb{C}_{2}}{App^{\pmb{E}}_{v}(c)}\\
+    {IRV}^{\boldsymbol{E}}_{S}(v) = \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
+    = \sum^{}_{c \in \boldsymbol{C}_{1}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
+    = \sum^{}_{c \in \boldsymbol{C}_{1}}{(\frac{{m}_{1}}{x} \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(\frac{{m}_{2}}{x} \cdot App^{\boldsymbol{E}}_{v}(c))}\\
+    = \frac{{m}_{1}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
+    \leq \frac{{m}_{1}}{x} \cdot (-\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)})+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
+    = -\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
     = 0
 \end{split}     
 \end{equation}\\
 
-A similar proof exists for $v \in \pmb{V}_{1}$.\\
-Hence ${IRV}^{\pmb{E}}_{S}(v) \leq 0$ for all $v$, showing that choosing strategy 3 with these conditions will lead to the least Social-Positive, Social-Sign and Social-Sign optimal solutions. 
+A similar proof exists for $v \in \boldsymbol{V}_{1}$.\\
+Hence ${IRV}^{\boldsymbol{E}}_{S}(v) \leq 0$ for all $v$, showing that choosing strategy 3 with these conditions will lead to the least Social-Positive, Social-Sign and Social-Sign optimal solutions. 
 
 \subsubsection{More Questions!}
 
@@ -241,67 +241,67 @@ Are there bounds between the difference of social costs among these outcomes?
 \subsection{Question 2}
 We can show that a voter voting for the highest weighted option will never be detrimental to their Individual Reward Value.\\
 
-Consider a voter $v_{1}$. Let $c_{1}$ be their highest weighted candidate, ${argmax}_{c \in \pmb{C}}App^{\pmb{E}}_{v_{i}}(c)$. Now consider 2 cases: (1) $v_{1}$ approves of $c_{1}$, (2) $v_{1}$ does not approve of $c_{1}$. Let $a_{c}$ be the number of approvals candidate $c \in \pmb{C}$ has excluding $v_{1}$'s vote for $c_{1}$. Let $m$ be the total number of votes excluding $v_{1}$'s vote for $c_{1}$.\\
+Consider a voter $v_{1}$. Let $c_{1}$ be their highest weighted candidate, ${argmax}_{c \in \boldsymbol{C}}App^{\boldsymbol{E}}_{v_{i}}(c)$. Now consider 2 cases: (1) $v_{1}$ approves of $c_{1}$, (2) $v_{1}$ does not approve of $c_{1}$. Let $a_{c}$ be the number of approvals candidate $c \in \boldsymbol{C}$ has excluding $v_{1}$'s vote for $c_{1}$. Let $m$ be the total number of votes excluding $v_{1}$'s vote for $c_{1}$.\\
 
 In case (1), 
 \begin{equation}
 \begin{aligned}
-{IRV}^{\pmb{E}}_{(1)}(v_1) 
-&= {Res}^{\pmb{E}}_{S}(c_1)\cdot{App}^{\pmb{E}}_{v_1}(c_1) + \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}\\
-&= \frac{a_1+1}{m+1}\cdot{App}^{\pmb{E}}_{v_1}(c_1) + \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}
+{IRV}^{\boldsymbol{E}}_{(1)}(v_1) 
+&= {Res}^{\boldsymbol{E}}_{S}(c_1)\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1) + \sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)}\\
+&= \frac{a_1+1}{m+1}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1) + \sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)}
 \end{aligned}  
 \end{equation}
 
 In case (2), 
 \begin{equation}
 \begin{aligned}
-{IRV}^{\pmb{E}}_{(1)}(v_1) 
-&= {Res}^{\pmb{E}}_{S}(c_1)\cdot{App}^{\pmb{E}}_{v_1}(c_1) + \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}\\
-&= \frac{a_1}{m}\cdot{App}^{\pmb{E}}_{v_1}(c_1) + \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}
+{IRV}^{\boldsymbol{E}}_{(1)}(v_1) 
+&= {Res}^{\boldsymbol{E}}_{S}(c_1)\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1) + \sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)}\\
+&= \frac{a_1}{m}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1) + \sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_n}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)}
 \end{aligned}  
 \end{equation}
 
 Therefore,
 \begin{equation}\label{IRV_DIFF}
 \begin{aligned}
-{IRV}^{\pmb{E}}_{(2)}(v_1) - {IRV}^{\pmb{E}}_{(1)}(v_1)
-&=  \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}\\
-&+ \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\pmb{E}}_{v_1}(c_1)\\
+{IRV}^{\boldsymbol{E}}_{(2)}(v_1) - {IRV}^{\boldsymbol{E}}_{(1)}(v_1)
+&=  \sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)}\\
+&+ \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1)\\
 \end{aligned}  
 \end{equation}
 
 Case (2) will only yield a larger Individual Reward Value than Case (1) if 
 \begin{gather}
-\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)} + \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\pmb{E}}_{v_1}(c_1) > 0\nonumber\\
-\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)} > \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\pmb{E}}_{v_1}(c_1)
+\sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)} + \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1) > 0\nonumber\\
+\sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)} > \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1)
 \end{gather}
 
-The maximum value of $\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}$ is attained when ${App}^{\pmb{E}}_{v_1}(c_{n}) = 1 \forall {c} \in \pmb{C} \setminus \{c_1\}$. So,
+The maximum value of $\sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)}$ is attained when ${App}^{\boldsymbol{E}}_{v_1}(c_{n}) = 1 \forall {c} \in \boldsymbol{C} \setminus \{c_1\}$. So,
 \begin{equation}
-\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)} = \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\right)} = \frac{\sum^{|\pmb{C}|}_{n = 2}{a_{c_{n}}}}{m(m+1)} = \frac{m-a_1}{m(m+1)}
+\sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)} = \sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\right)} = \frac{\sum^{|\boldsymbol{C}|}_{n = 2}{a_{c_{n}}}}{m(m+1)} = \frac{m-a_1}{m(m+1)}
 \end{equation}
 
 Therefore,
 \begin{equation}
-\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)} \leq \beta\cdot\sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\right)} = \beta\cdot\frac{m-a_1}{m(m+1)}
+\sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)} \leq \beta\cdot\sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\right)} = \beta\cdot\frac{m-a_1}{m(m+1)}
 \end{equation}
-Where $\beta$ is ${max}_{c \in \pmb{C} \setminus \{c_1\}}\left({App}^{\pmb{E}}_{v_1}(c)\right)$. Note that since we have defined $c_1$ to be the highest weighted candidate for $v_1$, $\beta \leq {App}^{\pmb{E}}_{v_1}(c_1)$.\\
+Where $\beta$ is ${max}_{c \in \boldsymbol{C} \setminus \{c_1\}}\left({App}^{\boldsymbol{E}}_{v_1}(c)\right)$. Note that since we have defined $c_1$ to be the highest weighted candidate for $v_1$, $\beta \leq {App}^{\boldsymbol{E}}_{v_1}(c_1)$.\\
 
 Therefore, substituting this inequality into \eqref{IRV_DIFF},
 \begin{equation}
 \begin{aligned}
-{IRV}^{\pmb{E}}_{(2)}(v_1) - {IRV}^{\pmb{E}}_{(1)}(v_1)
-&=  \sum^{|\pmb{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_{n})\right)}\\
-&+ \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\pmb{E}}_{v_1}(c_1)\\
-&\leq \beta\cdot\frac{m-a_1}{m(m+1)} + \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\pmb{E}}_{v_1}(c_1)\\
-&= \beta\cdot\frac{m-a_1}{m(m+1)} - \frac{m-a_1}{m(m+1)}\cdot{App}^{\pmb{E}}_{v_1}(c_1)\\
-&= \left(\beta - {App}^{\pmb{E}}_{v_1}(c_1)\right)\left(\frac{m-a_1}{m(m+1)}\right)
+{IRV}^{\boldsymbol{E}}_{(2)}(v_1) - {IRV}^{\boldsymbol{E}}_{(1)}(v_1)
+&=  \sum^{|\boldsymbol{C}|}_{n = 2}{\left(\frac{a_{c_{n}}}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_{n})\right)}\\
+&+ \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1)\\
+&\leq \beta\cdot\frac{m-a_1}{m(m+1)} + \left(\frac{a_1}{m}-\frac{a_{1}+1}{m+1}\right)\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1)\\
+&= \beta\cdot\frac{m-a_1}{m(m+1)} - \frac{m-a_1}{m(m+1)}\cdot{App}^{\boldsymbol{E}}_{v_1}(c_1)\\
+&= \left(\beta - {App}^{\boldsymbol{E}}_{v_1}(c_1)\right)\left(\frac{m-a_1}{m(m+1)}\right)
 \end{aligned} 
 \end{equation}\\
 
-Since $\beta \leq {App}^{\pmb{E}}_{v_1}(c_1)$,
+Since $\beta \leq {App}^{\boldsymbol{E}}_{v_1}(c_1)$,
 \begin{equation}
-     \beta - {App}^{\pmb{E}}_{v_1}(c_1) \leq 0
+     \beta - {App}^{\boldsymbol{E}}_{v_1}(c_1) \leq 0
 \end{equation}
 and since $m \geq a_1$ and $m \in \mathbb{Z}^+$,
 \begin{equation}
@@ -309,10 +309,66 @@ and since $m \geq a_1$ and $m \in \mathbb{Z}^+$,
 \end{equation}
 we show that 
 \begin{equation}
-     {IRV}^{\pmb{E}}_{(2)}(v_1) - {IRV}^{\pmb{E}}_{(1)}(v_1) \leq \left(\beta - {App}^{\pmb{E}}_{v_1}(c_1)\right)\left(\frac{m-a_1}{m(m+1)}\right) \leq 0
+     {IRV}^{\boldsymbol{E}}_{(2)}(v_1) - {IRV}^{\boldsymbol{E}}_{(1)}(v_1) \leq \left(\beta - {App}^{\boldsymbol{E}}_{v_1}(c_1)\right)\left(\frac{m-a_1}{m(m+1)}\right) \leq 0
 \end{equation}\\
 
 Therefore, we have shown that case (2), where the voter does not vote for their highest weighted candidate, will always result in that voter's Individual Reward Value being lower than or equal to that of case (1), where the voter votes for their highest weighted candidate
+
+
+\section{Voting Strategies and their Consequences}
+\subsection{Grouping the voters}
+An important observation is that we can simplify our task of analysing voting strategy performance by grouping voters in accordance with their voting behaviors under the strategy. For example, for the Voting Strategy where voters vote for only the candidate which they've assigned the highest approval weight out of all the candidates, we can group voters into groups according to which candidate they will be voting for. We can then say that there are a certain number of voters in the group, with each voter having an approval weight for a given candidate that is the averaged weight of that candidate among all of the input voters that gave rise to the group.
+
+We can show how such grouping can be used while maintaining the integrity of the PRV value.
+
+Let there be a set of candidates $\boldsymbol{C}$ and voters $\boldsymbol{V}$.
+
+\begin{equation*}
+    PRV = \sum^{}_{v \in \boldsymbol{V}}{\left(\sum^{}_{c \in \boldsymbol{C}}{{App}_v(c) \cdot {Res}(c)}\right)}
+\end{equation*}
+
+Let us group voters together based on a certain criterion, we will be using their highest ranked candidate for this example.
+Let a set of voters that have $c$ as their highet ranked candidate be $V_c$.
+
+\begin{equation*}
+\begin{aligned}
+PRV &= \sum^{}_{c \in \boldsymbol{C}}{\left(\sum^{}_{v \in V_c}{{IRV}(v)}\right)}\\
+&= \sum^{}_{c \in \boldsymbol{C}}{\left({IRV}({v_c}_1)+{IRV}({v_c}_2)+\cdots\right)}\\
+&= \sum^{}_{c \in \boldsymbol{C}}{\left(\sum^{}_{c in \boldsymbol{C}}{\left({App}_{{v_c}_1}(c)\cdot Res(c)\right)}+\sum^{}_{c in \boldsymbol{C}}{\left({App}_{{v_c}_2}(c)\cdot Res(c)\right)}+\cdots\right)}\\
+&= \sum^{}_{c \in \boldsymbol{C}}{\left(\sum^{}_{c in \boldsymbol{C}}{\left(\sum^{}_{v \in V_c}{{App}_{v}(c)}\right)}+\right)}
+\end{aligned}    
+\end{equation*}
+
+
+\subsection{Voting only for the highest weighted candidate}
+We will now show how and why we can use such an approach to model elections where only the Highest Approval voting strategy is used, whilst still preserving the PRV value.\\
+
+Let there be an election with $|c|$ candidates. We can construct $|c|$ groups where $|g_c|$ represents a group that supports (will vote for) candidate $c \in \boldsymbol{C}$. We will give each group a population size $|g_c|$ that represents the number of voters that will vote for candidate $c$. The group will be allocated approval weights $\forall c \in \boldsymbol{C}$ that corresponds to the average Approval Weight for each given candidate among the voters associated with that group. Let the set of all such groups be $\boldsymbol{G} = \{g_c | c \in \boldsymbol{C}\}$.
+
+For our theoretical cases, without loss of generality, we can notate the Social Optimal candidate, ${argmax}_{c \in \boldsymbol{C}} \sum^{}_{v \in \boldsymbol{V}}{App^{\boldsymbol{E}}_{v}(c)}$, as $c_1$.
+
+\begin{equation}
+     PRV_{SO} = \sum^{}_{g \in \boldsymbol{G}}{\left(App_g(c_1)\cdot|g|\right)} 
+\end{equation}
+
+In the strategy where each voter votes only for their top weighted candidate, the result of the election will be proportional to the population size of each group.
+
+\begin{equation}
+     PRV_{FirstOnly} = \sum^{}_{g \in \boldsymbol{G}}{\left(\sum^{}_{c \in \boldsymbol{C}}{\left(\frac{|g_c|}{|\boldsymbol{V}|} \cdot App_g(c)\right)} \cdot |g|\right)} 
+\end{equation} 
+
+We can create a metric called "Difference" (or "diff" for short) that is the difference between $PRV_{SO}$ and $PRV_{FirstOnly}$.
+\begin{equation}
+\begin{aligned}
+{diff} &= PRV_{FirstOnly} - PRV_{SO}\\
+&= \sum^{}_{g \in \boldsymbol{G}}{\left(\sum^{}_{c \in \boldsymbol{C}}{\left(\frac{|g_c|}{|\boldsymbol{V}|} \cdot App_g(c)\right)} \cdot |g| - \sum^{}_{g \in \boldsymbol{G}}{\left(App_g(c_1)\cdot|g|\right)}\right)}\\
+&= \sum^{}_{g \in \boldsymbol{G}}{\left(\sum^{}_{c \in \boldsymbol{C}}{\left(\frac{|g_c|}{|\boldsymbol{V}|} \cdot App_g(c)\right)} \cdot |g| - App_g(c_1)\cdot|g|\right)}\\
+&= \sum^{}_{g \in \boldsymbol{G}}{\left(|g|\left(\sum^{}_{c \in \boldsymbol{C}}{\left(\frac{|g_c|}{|\boldsymbol{V}|} \cdot App_g(c)\right)} - App_g(c_1)\right)\right)}
+\end{aligned}
+\end{equation}\\
+
+Our goal will be to minimise this $diff$ value.
+
 
 
 
