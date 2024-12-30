@@ -358,7 +358,7 @@ In the strategy where each voter votes only for their top weighted candidate, th
 \end{equation} 
 
 We can create a metric called "Difference" (or "diff" for short) that is the difference between $PRV_{SO}$ and $PRV_{FirstOnly}$.
-\begin{equation}
+\begin{equation}\label{DIFF_EQN_0}
 \begin{aligned}
 {diff} &= PRV_{FirstOnly} - PRV_{SO}\\
 &= \sum^{}_{g \in \boldsymbol{G}}{\left(\sum^{}_{c \in \boldsymbol{C}}{\left(\frac{|g_c|}{|\boldsymbol{V}|} \cdot App_g(c)\right)} \cdot |g| - \sum^{}_{g \in \boldsymbol{G}}{\left(App_g(c_1)\cdot|g|\right)}\right)}\\
@@ -367,10 +367,13 @@ We can create a metric called "Difference" (or "diff" for short) that is the dif
 \end{aligned}
 \end{equation}\\
 
-Our goal will be to minimise this $diff$ value.
+Our goal will be to minimise this $diff$ value.\\
 
+From \eqref{IRV_DIFF}, we can see that having ${App}_{g}(c_1)$ be as large as possible will result in the most negative $diff$ value. While we can have ${App}_{g}(c_1) = 1$, the same cannot necessarily be said for the supporting groups of other candidates. This is because there are additional conditions to maintain the Social Optimal candidate. Therefore, the importance of balancing the ratio of $c_1$ supporters and approval weights of other candidates' supporters is key. 
 
+For one, we can probably say that setting a -1 Approval Weight for all candidates that is neither $c_1$ or that group's highest weighted candidate will result in a more negative PRV as that will make more negative the entire voting population's average approval weight of that non-social optimal candidate, therefore the negative impact of votes towards that non-social optimal candidate will only serve to further drive the PRV value away from the Social Optimal maximum.
 
+We can also make the Approval Weight of $c_1$ for the group that votes for $c_1$ 1 as this will maximise the Social Optimal PRV, therefore maximising the negative effect on the PRV of any detraction of the result share from $c_1$.
 
 
 
