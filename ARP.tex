@@ -376,9 +376,27 @@ For one, we can probably say that setting a -1 Approval Weight for all candidate
 We can also make the Approval Weight of $c_1$ for the group that votes for $c_1$ 1 as this will maximise the Social Optimal PRV, therefore maximising the negative effect on the PRV of any detraction of the result share from $c_1$.
 
 
+\subsection{Voting for every candidate except the lowest weighted candidate}
 
+Construct groups according to their lowest weighted candidate. For the purposes of this method, each group's last placed candidate will have a lower $App$ value than all the other candidates. Let there be $|C|$ groups, group $g_c$ will rank candidate $c$ the lowest.
 
+The result for candidate $c$ is $\frac{|\boldsymbol{V}|-|g_c|}{|\boldsymbol{V}|(|\boldsymbol{C}|-1)}$.
 
+Therefore,
+
+\begin{equation}
+\begin{aligned}
+Diff &= \sum^{}_{g \in \boldsymbol{G}}{\left(|g| \cdot \sum^{}_{c \in \boldsymbol{C}}{\left(\frac{|\boldsymbol{V}|-|g_c|}{|\boldsymbol{V}|(|\boldsymbol{C}|-1)} \cdot App_g(c)\right)} - |g| \cdot App_g(c_1) \right)}\\
+&= \sum^{}_{g \in \boldsymbol{G}}{\left(|g| \left( \sum^{}_{c \in \boldsymbol{C} \setminus \{c_1\}}{\left(\frac{|\boldsymbol{V}|-|g_c|}{|\boldsymbol{V}|(|\boldsymbol{C}|-1)} \cdot App_g(c)\right)} - \left(1 - \frac{|\boldsymbol{V}|-|g_c|}{|\boldsymbol{V}|(|\boldsymbol{C}|-1)}\right)App_g(c_1) \right) \right)}
+\end{aligned}
+\end{equation} 
+
+We use $r_c$ to represent the fraction of voters that support candidate $c$.
+
+\begin{gather} 
+\frac{|\boldsymbol{V}|-|g_c|}{|\boldsymbol{V}|(|\boldsymbol{C}|-1)} = \frac{1-r_c}{|\boldsymbol{C}|-1} \\
+1-\frac{|\boldsymbol{V}|-|g_c|}{|\boldsymbol{V}|(|\boldsymbol{C}|-1)} = \frac{|\boldsymbol{C}|-2+r_{c_1}}{|\boldsymbol{C}|-1}
+\end{gather}
 
 
 
