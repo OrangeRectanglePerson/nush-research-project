@@ -128,60 +128,6 @@ Strategies differ from outcomes in that strategies lead to outcomes. Therefore, 
   \item A voter only votes for the options with a positive individual reward weight. (Strategy 3)
 \end{itemize}
 
-\subsubsection{Strategy 3}
-
-Let there be an election $\boldsymbol{E}$ with a set of candidates $\boldsymbol{C}$ and a set of voters $\boldsymbol{V}$. 
-Let $\boldsymbol{C}$ be split into subsets $\boldsymbol{C}_{1}$, $\boldsymbol{C}_{2}$ and $\boldsymbol{C}_{3}$ (i.e. $\boldsymbol{C}_{1}, \boldsymbol{C}_{2}, \boldsymbol{C}_{3} \subset \boldsymbol{C}$ and $\boldsymbol{C}_{1}+\boldsymbol{C}_{2}+\boldsymbol{C}_{3} \equiv \boldsymbol{C}$) and let $\boldsymbol{V}$ be split into subsets $\boldsymbol{V}_{1}$, $\boldsymbol{V}_{2}$, and $\boldsymbol{V}_{3}$ (i.e. $\boldsymbol{V}_{1}, \boldsymbol{V}_{2}, \boldsymbol{V}_{3} \subset \boldsymbol{V}$ and $\boldsymbol{V}_{1}+\boldsymbol{V}_{2}+\boldsymbol{V}_{3} \equiv \boldsymbol{V}$) with sizes ${m}_{1}$, ${m}_{2}$ and ${m}_{3}$ respectively.
-Let the subsets fulfil the following conditions:\\
-
-\begin{itemize}
-    \item For all $v \in \boldsymbol{V}_{1}$:\\
-    \begin{gather}
-    \begin{split}
-        \sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)} \leq -\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}
-    \end{split}\\
-    App^{\boldsymbol{E}}_{v}(c) \geq 0, c \in \boldsymbol{C}_{1}\\
-    App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}_{2} \cup \boldsymbol{C}_{3}
-    \end{gather}
-    \item For all $v \in \boldsymbol{V}_{2}$:\\
-    \begin{gather}
-    \begin{split}
-        \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)} \leq -\frac{{m}_{1}}{{m}_{2}}\sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)}
-    \end{split}\\
-    App^{\boldsymbol{E}}_{v}(c) \geq 0, c \in \boldsymbol{C}_{2}\\
-    App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}_{1} \cup \boldsymbol{C}_{3}
-    \end{gather}
-    \item For all $v \in \boldsymbol{V}_{3}$:\\
-    \begin{gather}
-        App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}
-    \end{gather}
-\end{itemize}
-
-Given these conditions and using strategy 3,
-\begin{equation}
-    {IRV}^{\boldsymbol{E}}_{S}(v) = \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
-    = \sum^{}_{c \in \boldsymbol{C}_{1}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{3}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}
-\end{equation}\\
-
-As $App^{\boldsymbol{E}}_{v}(c) \leq 0$ for all $c \in \boldsymbol{C}_{3}$, $\sum^{}_{c \in \boldsymbol{C}_{3}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}=0$. 
-Additionally, as $App^{\boldsymbol{E}}_{v}(c) \leq 0$ for all $c$ when $v \in \boldsymbol{V}_{3}$, ${IRV}^{\boldsymbol{E}}_{S}(v) \leq 0$ for all $v \in \boldsymbol{V}_{3}$. 
-The total number of votes $x$ will be equal to ${m}_{1}{c}_{1}+{m}_{2}{c}_{2}$, where ${c}_{1}$ and ${c}_{2}$ are the sizes of $\boldsymbol{C}_{1}$ and $\boldsymbol{C}_{2}$ respectively. This is because given strategy 3 all $v \in \boldsymbol{V}_{1}$ or $\boldsymbol{V}_{2}$ will vote for all $c \in \boldsymbol{C}_{1}$ or $\boldsymbol{C}_{2}$ respectively i.e. ${c}_{1}$ candidates receive ${m}_{1}$ votes each and ${c}_{2}$ candidates receive ${m}_{2}$ votes each.\\
-For $v \in \boldsymbol{V}_{1}$:
-\begin{equation}
-\begin{split}
-    {IRV}^{\boldsymbol{E}}_{S}(v) = \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
-    = \sum^{}_{c \in \boldsymbol{C}_{1}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
-    = \sum^{}_{c \in \boldsymbol{C}_{1}}{(\frac{{m}_{1}}{x} \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(\frac{{m}_{2}}{x} \cdot App^{\boldsymbol{E}}_{v}(c))}\\
-    = \frac{{m}_{1}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
-    \leq \frac{{m}_{1}}{x} \cdot (-\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)})+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
-    = -\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
-    = 0
-\end{split}     
-\end{equation}\\
-
-A similar proof exists for $v \in \boldsymbol{V}_{1}$.\\
-Hence ${IRV}^{\boldsymbol{E}}_{S}(v) \leq 0$ for all $v$, showing that choosing strategy 3 with these conditions will lead to the least Social-Positive, Social-Sign and Social-Sign optimal solutions. 
-
 \subsubsection{More Questions!}
 
 Are there bounds between the social cost of these strategies and outcomes compared to the utilitarian Socially Optimal outcome?\\
@@ -322,9 +268,19 @@ From \eqref{IRV_DIFF}, we can see that having ${App}_{g}(c_1)$ be as large as po
 
 For one, we can probably say that setting a -1 Approval Weight for all candidates that is neither $c_1$ or that group's highest weighted candidate will result in a more negative PRV as that will make more negative the entire voting population's average approval weight of that non-social optimal candidate, therefore the negative impact of votes towards that non-social optimal candidate will only serve to further drive the PRV value away from the Social Optimal maximum.
 
-We can also make the Approval Weight of $c_1$ for the group that votes for $c_1$ 1 as this will maximise the Social Optimal PRV, therefore maximising the negative effect on the PRV of any detraction of the result share from $c_1$.
+We can also make the Approval Weight of $c_1$ for the group that votes for $c_1$ 1 as this will maximise the Social Optimal PRV, therefore maximising the negative effect on the PRV of any detraction of the result share from $c_1$.\\
 
+minimally Social Positive optimal\\
 
+let there be one candidate $c_0$ alongside other candidates $c_x$ who have supporters in set $V_x$ such that:
+\\for all $v \in V_x$
+\begin{equation}
+    App_v(c_x) \geq App_v(c_0) \geq 0
+\end{equation}
+\\and for all $v \notin V_x$
+\begin{equation}
+    App_v(c_x) \leq 0
+\end{equation}
 \subsection{Voting for every candidate except the lowest weighted candidate}
 
 Construct groups according to their lowest weighted candidate. For the purposes of this method, each group's last placed candidate will have a lower $App$ value than all the other candidates. Let there be $|C|$ groups, group $g_c$ will rank candidate $c$ the lowest.
@@ -363,7 +319,131 @@ Setting the approval weight for every other candidate to be as negative as possi
 
 If we set the group's least approved candidate's approval weight to be -1, this will allow the approval weight for other candidates to be as low as possible (an arbitrarily small quantity more than -1).
 
+Our Approval Weights will be as follows:\\
+\begin{itemize}
+    \item $App_{g \setminus \{g_{c_1}\}} = $
+    \begin{equation}
+    \begin{cases}
+    1, & c_1\\
+    -1, & least\ approved\ candidate\\
+    -1 + c, & otherwise
+    \end{cases}
+    \end{equation}
+    \item $App_{g_{c_1}} = $
+    \begin{equation}
+    \begin{cases}
+    -1, & c_1\\
+    -1 + c, & least\ approved\ candidate
+    \end{cases}
+    \end{equation}
+\end{itemize}
 
+Where c is an arbitratily small positive value. 
+
+The result of the election will be:
+
+\begin{equation}
+{Res}(c) = 
+\begin{cases}
+    \frac{1-r_{c_1}}{|\boldsymbol{C}|-1}, & c_1\\
+    1 - \frac{1-r_{c_1}}{|\boldsymbol{C}|-1}, & all\ other\ candidates\ combined
+    \end{cases}
+\end{equation}
+
+The average Approval Weight of each candidate among the whole population will be:
+
+\begin{equation}
+\begin{aligned}
+{App}(c) = 
+\begin{cases}
+    -\frac{|g_{c_1}}{|\boldsymbol{V}|} + \frac{|\boldsymbol{V}|-|g_{c_1}}{|\boldsymbol{V}|}, & c_1\\
+    -1 + c, & all\ other\ candidates
+\end{cases}
+=
+\begin{cases}
+    1-2r_{c_1}, & c_1\\
+    -1 + c, & all\ other\ candidates
+\end{cases}
+\end{aligned}
+\end{equation}
+
+So, 
+
+\begin{equation}
+    \frac{diff}{|\boldsymbol{V}|} = \frac{2(1-r_{c_1})^2}{|\boldsymbol{C}|} - 1 - 1 + 2r_{c_1} = \frac{2(1-r_{c_1})^2}{|\boldsymbol{C}|} + 2r_{c_1} - 2
+\end{equation}
+
+\begin{equation}
+    \frac{d}{d\, r_{c_1}}\left( \frac{diff}{|\boldsymbol{V}|} \right) = \frac{2(2r_{c_1} + |\boldsymbol{C}| - 3)}{|\boldsymbol{C}| - 1}
+\end{equation}
+
+Since $\frac{d^2}{d\, r_{c_1}^2}\left( \frac{diff}{|\boldsymbol{V}|} \right) = \frac{4}{|\boldsymbol{C}| - 1} > 0$, $r_{c_1}$ where $\frac{d}{d\, r_{c_1}}\left( \frac{diff}{|\boldsymbol{V}|} \right) = 0$ will be the local minium. However, when $\frac{d}{d\, r_{c_1}}\left( \frac{diff}{|\boldsymbol{V}|} \right) = 0$, $r_{c_1} = \frac{3-|\boldsymbol{C}|}{2}$. Since $r_{c_1}$ will be negative when $|\boldsymbol{C}| > 3$, our minimum $\frac{diff}{|\boldsymbol{V}|}$ will be when $r_{c_1} = 0$.
+
+Therefore, the lower limit for $\frac{diff}{|\boldsymbol{V}|}$ will be:
+
+\begin{equation}
+\begin{cases}
+    -\frac{1}{2}, & |\boldsymbol{C}| = 2\\
+    \frac{2}{|\boldsymbol{C}|-1} - 2, & |\boldsymbol{C}| \geq 3
+\end{cases}
+\end{equation}
+
+
+\subsection{Voting only candidates with a positive individual reward weight}
+
+Let there be an election $\boldsymbol{E}$ with a set of candidates $\boldsymbol{C}$ and a set of voters $\boldsymbol{V}$. 
+Let $\boldsymbol{C}$ be split into subsets $\boldsymbol{C}_{1}$, $\boldsymbol{C}_{2}$ and $\boldsymbol{C}_{3}$ (i.e. $\boldsymbol{C}_{1}, \boldsymbol{C}_{2}, \boldsymbol{C}_{3} \subset \boldsymbol{C}$ and $\boldsymbol{C}_{1}+\boldsymbol{C}_{2}+\boldsymbol{C}_{3} \equiv \boldsymbol{C}$) and let $\boldsymbol{V}$ be split into subsets $\boldsymbol{V}_{1}$, $\boldsymbol{V}_{2}$, and $\boldsymbol{V}_{3}$ (i.e. $\boldsymbol{V}_{1}, \boldsymbol{V}_{2}, \boldsymbol{V}_{3} \subset \boldsymbol{V}$ and $\boldsymbol{V}_{1}+\boldsymbol{V}_{2}+\boldsymbol{V}_{3} \equiv \boldsymbol{V}$) with sizes ${m}_{1}$, ${m}_{2}$ and ${m}_{3}$ respectively.
+Let the subsets fulfil the following conditions:\\
+
+\begin{itemize}
+    \item For all $v \in \boldsymbol{V}_{1}$:\\
+    \begin{gather}
+    \begin{split}
+        \sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)} \leq -\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}
+    \end{split}\\
+    App^{\boldsymbol{E}}_{v}(c) \geq 0, c \in \boldsymbol{C}_{1}\\
+    App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}_{2} \cup \boldsymbol{C}_{3}
+    \end{gather}
+    \item For all $v \in \boldsymbol{V}_{2}$:\\
+    \begin{gather}
+    \begin{split}
+        \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)} \leq -\frac{{m}_{1}}{{m}_{2}}\sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)}
+    \end{split}\\
+    App^{\boldsymbol{E}}_{v}(c) \geq 0, c \in \boldsymbol{C}_{2}\\
+    App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}_{1} \cup \boldsymbol{C}_{3}
+    \end{gather}
+    \item For all $v \in \boldsymbol{V}_{3}$:\\
+    \begin{gather}
+        App^{\boldsymbol{E}}_{v}(c) \leq 0, c \in \boldsymbol{C}
+    \end{gather}
+\end{itemize}
+
+Given these conditions and voting only candidates with a positive individual reward weight,
+\begin{equation}
+\begin{aligned}
+{IRV}^{\boldsymbol{E}}_{S}(v) &= \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
+&= \sum^{}_{c \in \boldsymbol{C}_{1}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{3}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}
+\end{aligned}
+\end{equation}\\
+
+As $App^{\boldsymbol{E}}_{v}(c) \leq 0$ for all $c \in \boldsymbol{C}_{3}$, $\sum^{}_{c \in \boldsymbol{C}_{3}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}=0$. 
+Additionally, as $App^{\boldsymbol{E}}_{v}(c) \leq 0$ for all $c$ when $v \in \boldsymbol{V}_{3}$, ${IRV}^{\boldsymbol{E}}_{S}(v) \leq 0$ for all $v \in \boldsymbol{V}_{3}$. 
+The total number of votes $x$ will be equal to ${m}_{1}{c}_{1}+{m}_{2}{c}_{2}$, where ${c}_{1}$ and ${c}_{2}$ are the sizes of $\boldsymbol{C}_{1}$ and $\boldsymbol{C}_{2}$ respectively. This is because given strategy 3 all $v \in \boldsymbol{V}_{1}$ or $\boldsymbol{V}_{2}$ will vote for all $c \in \boldsymbol{C}_{1}$ or $\boldsymbol{C}_{2}$ respectively i.e. ${c}_{1}$ candidates receive ${m}_{1}$ votes each and ${c}_{2}$ candidates receive ${m}_{2}$ votes each.\\
+For $v \in \boldsymbol{V}_{1}$:
+\begin{equation}
+\begin{split}
+    {IRV}^{\boldsymbol{E}}_{S}(v) = \sum^{}_{c \in \boldsymbol{C}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
+    = \sum^{}_{c \in \boldsymbol{C}_{1}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(Res^{\boldsymbol{E}}_{S}(c) \cdot App^{\boldsymbol{E}}_{v}(c))}\\
+    = \sum^{}_{c \in \boldsymbol{C}_{1}}{(\frac{{m}_{1}}{x} \cdot App^{\boldsymbol{E}}_{v}(c))}+\sum^{}_{c \in \boldsymbol{C}_{2}}{(\frac{{m}_{2}}{x} \cdot App^{\boldsymbol{E}}_{v}(c))}\\
+    = \frac{{m}_{1}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{1}}{App^{\boldsymbol{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
+    \leq \frac{{m}_{1}}{x} \cdot (-\frac{{m}_{2}}{{m}_{1}}\sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)})+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
+    = -\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}+\frac{{m}_{2}}{x} \cdot \sum^{}_{c \in \boldsymbol{C}_{2}}{App^{\boldsymbol{E}}_{v}(c)}\\
+    = 0
+\end{split}     
+\end{equation}\\
+
+A similar proof exists for $v \in \boldsymbol{V}_{1}$.\\
+Hence ${IRV}^{\boldsymbol{E}}_{S}(v) \leq 0$ for all $v$, showing that choosing strategy 3 with these conditions will lead to the least Social-Positive, Social-Sign and Social-Sign optimal solutions. 
 
 
 
