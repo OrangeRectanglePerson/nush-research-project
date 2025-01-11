@@ -270,7 +270,40 @@ For one, we can probably say that setting a -1 Approval Weight for all candidate
 
 We can also make the Approval Weight of $c_1$ for the group that votes for $c_1$ 1 as this will maximise the Social Optimal PRV, therefore maximising the negative effect on the PRV of any detraction of the result share from $c_1$.\\
 
-minimally Social Positive optimal\\
+We will rearrange the diff equation to isolate ${App}_g(c_1)$ and divide $diff$ by $\boldsymbol{V}$ to get a bound on the average discrepancy among the voting populace instead. We will also use $r_c$ to represent the fraction of the voting population that will vote for candidate $c$.
+\begin{equation}
+    r_c = \frac{|g_c|}{|\boldsymbol{V}|}
+\end{equation}
+\begin{equation}
+\frac{diff}{|\boldsymbol{V}|} = \sum^{}_{c_a \in \boldsymbol{C}}{\left(r_{c_a} \left( \sum^{}_{c_b \in \boldsymbol{C} \setminus \{c_1\}}{\left(r_{c_b} \cdot App_{g_{c_a}}(c_b)\right)} - \left(r_{c_b} + 1\right)App_{g_{c_a}}(c_1) \right) \right)}
+\end{equation}
+
+From the equation, we see that making $App_{g_{c_a}}(c_1)$ as positive as possible for all groups will give us the most negative $\frac{diff}{|\boldsymbol{V}|}$. Meanwhile, making $App_{g_{c_a}}(c_b)$ as negative as possible $\forall c_b \in \boldsymbol{C} \setminus \{c_1\}$ for all groups will give us the most negative $\frac{diff}{|\boldsymbol{V}|}$.
+However, the condidion that group $g_c$ has candidate $c$ as the candidate with the most positive approval weight has to be maintained. Therefore, let us give all groups that don't have $c_1$ as their highest weighted candidate the following approval weight function.\\
+
+Where $\alpha > \beta$,
+\begin{equation}
+App_{g_{c_a} \in G \setminus \{g_{c_1}\}} = 
+    \begin{cases}
+    \alpha, & c_1\\
+    \beta, & c_a\\
+    -1, & all\ other\ candidates
+    \end{cases}
+\end{equation}
+\begin{equation}
+App_{g_{c_1}} = 
+    \begin{cases}
+    1, & c_1\\
+    -1, & all\ other\ candidates
+    \end{cases}
+\end{equation}
+
+Therefore,
+\begin{equation}
+\frac{diff}{|\boldsymbol{V}|} = r_{c_1}(2(r_{c_1})) + \sum^{}_{c \in \boldsymbol{C} \setminus \{c_1\}}{\left( r_c \left( (\alpha + 1)r_c + (\beta + 1)(r_{c_1} - 1) \right) \right)}
+\end{equation}
+
+\subsection{Minimally Social Positive optimal}
 
 let there be one candidate $c_0$ alongside other candidates $c_x$ who have supporters in set $V_x$ such that:
 \\for all $v \in V_x$
@@ -281,6 +314,7 @@ let there be one candidate $c_0$ alongside other candidates $c_x$ who have suppo
 \begin{equation}
     App_v(c_x) \leq 0
 \end{equation}
+
 \subsection{Voting for every candidate except the lowest weighted candidate}
 
 Construct groups according to their lowest weighted candidate. For the purposes of this method, each group's last placed candidate will have a lower $App$ value than all the other candidates. Let there be $|C|$ groups, group $g_c$ will rank candidate $c$ the lowest.
