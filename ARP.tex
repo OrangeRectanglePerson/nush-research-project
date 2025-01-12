@@ -25,6 +25,10 @@
 \section{Introduction}
 Introduction, Abstract, Preamble, All will go here.
 
+In Proportional Approval voting, the result of the vote will be a fraction of a whole allocated to each candidate or option (we will use the term candidate to refer to both of these concepts in our paper). All candidates are members of a set $\boldsymbol{C}$. Every voter will either Approve or Disapprove for each candidate. As the result of the election, each candidate will get a certain number of votes.
+
+Despite being based of the Approval Voting system, this voting system wildly differs from many used in the real world as its result is a proportion rather than a single winner or an allocation of a set number of winners from a pool of candidates. However, we believe that this voting system may still be used for other purposes where a fractional result can be applied, such as the allocation of easily divisible resources such as money. Another interesting fact about this voting system that warrants study is the fact that the number of candidates voters can vote for is limited only by the number of candidates on the ballot roll. This opens up a lot of flexibility and therefore might invite the potential use of many different voting strategies among different voter populations.
+
 \section{Questions}
 
 Let there be an election $\boldsymbol{E} = (\boldsymbol{C}, \boldsymbol{V}, \boldsymbol{A})$.
@@ -300,8 +304,34 @@ App_{g_{c_1}} =
 
 Therefore,
 \begin{equation}
-\frac{diff}{|\boldsymbol{V}|} = r_{c_1}(2(r_{c_1})) + \sum^{}_{c \in \boldsymbol{C} \setminus \{c_1\}}{\left( r_c \left( (\alpha + 1)r_c + (\beta + 1)(r_{c_1} - 1) \right) \right)}
+\frac{diff}{|\boldsymbol{V}|} = 2r_{c_1}(r_{c_1} - 1) + \sum^{}_{c \in \boldsymbol{C} \setminus \{c_1\}}{\left( r_c \left( (\alpha + 1)r_c + (\beta + 1)(r_{c_1} - 1) \right) \right)}
 \end{equation}
+
+We will now also use $k_c$ to represent the fraction of non-$c_1$ voters that support candidate $c \in \boldsymbol{C} \setminus \{c_1\}$. This way the only $r_c$ value we care about is $r_{c_1}$.
+\begin{equation}
+\frac{diff}{|\boldsymbol{V}|} = 2r_{c_1}(r_{c_1} - 1) + (r_{c_1} - 1)^2\sum^{}_{c \in \boldsymbol{C} \setminus \{c_1\}}{\left( k_c \left( \alpha k_c + k_c - \beta - 1 \right) \right)}
+\end{equation}
+
+If we assume that non-$c_1$ voters are split evenly among the non-$c_1$ alternatives,
+\begin{equation}
+\frac{diff}{|\boldsymbol{V}|} = 2r_{c_1}(r_{c_1} - 1) + (r_{c_1} - 1)^2\left(\frac{\alpha}{|\boldsymbol{C}|-1} + \frac{1}{|\boldsymbol{C}|-1} - \beta - 1 \right)
+\end{equation}
+
+According to computer calculations that ran through every value of $\alpha$, $\beta$, and $r_{c_1}$, the most negative $\frac{diff}{|\boldsymbol{V}|}$ can be is:
+\begin{equation}
+\begin{cases}
+    -\frac{1}{2}, & |\boldsymbol{C}| = 2\\
+    \frac{2}{|\boldsymbol{C}|-1} - 2, & |\boldsymbol{C}| \geq 3
+\end{cases}
+\end{equation}
+When $\beta = -1$, $\alpha \to -1$, and $r_{c_1} \to 0$
+
+Regarding the lower limit on $r_{c-1}$, the sum of approval weights of $c_1$ must be larger than that of all candidates. This gives us the inequlity $r_{c_1}+\beta (1-r_{c_1}) > \alpha r_{c_1} - (1-r_{c_1})$.
+This inequality can be rearragned to give us the lower bounds on $r_{c_1}$ given $\alpha$ and $\beta$.
+\begin{equation}
+    r_{c_1} > \frac{\frac{\alpha + 1}{|\boldsymbol{C}| - 1}- \beta - 1}{\frac{\alpha + 1}{|\boldsymbol{C}| - 1}- \beta + 1}
+\end{equation}
+Given our computer's finding of which $\alpha$ and $\beta$ values will give the smallest $\frac{diff}{|\boldsymbol{V}|}$ value, $r_{c_1} > 0$.
 
 \subsection{Minimally Social Positive optimal}
 
@@ -480,7 +510,40 @@ A similar proof exists for $v \in \boldsymbol{V}_{1}$.\\
 Hence ${IRV}^{\boldsymbol{E}}_{S}(v) \leq 0$ for all $v$, showing that choosing strategy 3 with these conditions will lead to the least Social-Positive, Social-Sign and Social-Sign optimal solutions. 
 
 
+\subsection{A general look at when voting for a candidate is benefitial}
+Let us assume that we have either a good approximation or know the result of the election if every other voter other than voter $v_0$ has casted their vote. Let such a result for candidate $c$ be $r_c$, and the total approval votes cast excluding oursbe $N$.
 
+\begin{equation}
+    {IRV}_{not\ participating} = \sum^{}_{c \in \boldsymbol{C}}{r_c \cdot {App}(c)}
+\end{equation}
+
+Let us now cast our votes. The candidates we vote for will be part of set $\boldsymbol{C}_{vote}$.
+
+\begin{equation}
+\begin{aligned}
+{IRV}_{participating} &= \sum^{}_{c \in \boldsymbol{C}_{vote}}{\frac{r_c \cdot N + 1}{N + |\boldsymbol{C}_{vote}|} \cdot {App}(c)} + \sum^{}_{c \in \boldsymbol{C} \setminus \boldsymbol{C}_{vote}}{\frac{r_c \cdot N}{N + |\boldsymbol{C}_{vote}|} \cdot {App}(c)}\\
+&= \frac{1}{N+|\boldsymbol{C}_{vote}|}\left( N \cdot \sum^{}_{c \in \boldsymbol{C}}{r_c \cdot {App}(c)} + \sum^{}_{c \in \boldsymbol{C}_{vote}}{{App}(c)} \right)
+\end{aligned}
+\end{equation}
+
+So, it is a weakly dominant stratefy for the individual voter to vote for candidates in $C_{vote}$ if 
+\begin{equation}
+    \sum^{}_{c \in \boldsymbol{C}}{r_c \cdot {App}(c)} \leq \frac{1}{N+|\boldsymbol{C}_{vote}|}\left( N \cdot \sum^{}_{c \in \boldsymbol{C}}{r_c \cdot {App}(c)} + \sum^{}_{c \in \boldsymbol{C}_{vote}}{{App}(c)} \right)
+\end{equation}
+Rearranging the terms, we can simplify the inequality to
+\begin{equation}
+    \sum^{}_{c \in \boldsymbol{C}}{r_c \cdot {App}(c)} \leq \frac{1}{|\boldsymbol{C}_{vote}|}\sum^{}_{c \in \boldsymbol{C}_{vote}}{{App}(c)}
+\end{equation}
+
+The implications of all voters adopting voting soley based off this rule warrants further study.
+
+\section{Conclusion}
+
+Conclusion will go here.
+
+\section{References}
+
+References will go here
 
 
 
